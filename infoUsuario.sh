@@ -36,7 +36,7 @@ for usuarios in $*; do
 				echo "--- Información de [$usuarios] ---"
 				echo "Nombre de usuario: $(grep "$usuarios" /etc/passwd | cut -d ":" -f 1)"
 				echo "Carpeta personal: $(grep "$usuarios" /etc/passwd | cut -d ":" -f 6)"
-				echo "PID (Procesos en ejecución): $$"
+				echo "PID (Procesos en ejecución): $(ps -aux | grep "^$usuarios" | wc -l)"
 				if who | grep "^$usuarios" >/dev/null; then
 					echo "Usuario conectado: SÍ"
 				else
@@ -48,6 +48,7 @@ for usuarios in $*; do
 			"size")
 				echo "--- Tamaño de $usuarios ---"
 				echo "$(grep $usuarios /etc/passwd | cut -d ":" -f 6 | du -sh | cut -f 1)"
+				echo
 			;;
 		esac
 	else
