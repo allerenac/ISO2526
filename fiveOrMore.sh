@@ -35,7 +35,9 @@ function identify {
 			echo "--- Archivos .txt [$2] ---"
 			echo "$(echo $archivos | cut -f 2 -d "/")"
 			echo "$(echo $archivos | cut -f 2 -d "/")" >> $1
-			echo cat $archivos > "$archivos.q."
+
+			echo "[$archivos] tiene $(cat $archivos | wc -w) palabras." > "$archivos.q."
+			cat $archivos >> "$archivos.q."
 		else
 			echo  "ERROR: $archivos no tiene contenido >= 15 líneas."
 		fi
