@@ -38,8 +38,8 @@ while True:
                 print("[usuario creado]")
         case 3:
             dir = input("Introduce directorio: ")
-            if os.path.isdir(dir):
-                print("El directorio",dir,"existe.")
+            if os.path.exists(dir) and os.path.isdir(dir):
+                print(dir,"existe y es un directorio.")
             else:
                 print("El directorio",dir,"no existe. Creando directorio...")
                 os.mkdir(dir)
